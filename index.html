@@ -1,3 +1,4 @@
+
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -26,11 +27,11 @@ Say: <i>"Select Licensed Staff" and "start over"</i>
 <script>
   // These are the voice commands in quotes followed by the function
   var commands = {
-  	'Tabitha Select All role': function() { selectVader(); responsiveVoice.speak('Selecting all role'); },
- 	'Tabitha Select Licensed Staff role': function() { selectSolo(); responsiveVoice.speak('Selecting Licensed Staff role'); },
- 	'Tabitha Select Unlicensed Staff role': function() { selectYoda(); responsiveVoice.speak('Selecting Unlicensed Staff role'); },
- 	'Tabitha Select Untagged role': function() { selectLuke(); responsiveVoice.speak('Selecting Untagged role'); },
-	'Tabitha start over': function() { startover(); responsiveVoice.speak('Starting over'); }
+  	'Select All role': function() { selectVader(); responsiveVoice.speak('selecting all role'); },
+ 	'Select Licensed Staff role': function() { selectSolo(); responsiveVoice.speak('selecting Licensed Staff role'); },
+ 	'Select Unlicensed Staff role': function() { selectYoda(); responsiveVoice.speak('selecting Unlicensed Staff role'); },
+ 	'Select Untagged role': function() { selectLuke(); responsiveVoice.speak('selecting Untagged role'); },
+	'start over': function() { startover(); responsiveVoice.speak('starting over'); }
  };
   
   // Add commands to annyang
@@ -62,19 +63,19 @@ var options = {
 }
 
 //Tabitha says hello
-responsiveVoice.speak('Hello Cody Welcome to your dashboard');
+responsiveVoice.speak('Welcome to Allstate Agency Ops QStream Dashboard');
 
 
 //Make Character selection
-function FilterAll()
+function selectVader()
 	{
-	activeSheet.applyFilterAsync('Role', 'All', tableauSoftware.FilterUpdateType.REPLACE); 
+	activeSheet.getWorksheets()[1].applyFilterAsync('Role', 'All', tableauSoftware.FilterUpdateType.REPLACE); 
 
 	}
 
 function selectYoda()
 	{
-	activeSheet.applyFilterAsync('Role', 'Licensed Staff', tableauSoftware.FilterUpdateType.REPLACE); 
+	activeSheet.getWorksheets()[1].applyFilterAsync('Role', 'Licensed Staff', tableauSoftware.FilterUpdateType.REPLACE); 
 	}
 
 function selectSolo()

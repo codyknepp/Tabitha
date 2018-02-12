@@ -67,6 +67,8 @@ var options = {
 //Tabitha says hello
 responsiveVoice.speak('Hello Cody Welcome to your dashboard','US English Female');
 
+	selectYoda();
+	selectCohort();
 
 //Make Character selection
 function selectVader()
@@ -74,7 +76,11 @@ function selectVader()
 	activeSheet.applyFilterAsync("Role", "All", tableauSoftware.FilterUpdateType.REPLACE); 
 
 	}
+function selectCohort()
+	{
+	activeSheet.applyFilterAsync("Cohort", "All", tableauSoftware.FilterUpdateType.REPLACE); 
 
+	}
 function selectYoda()
 	{
 	activeSheet.getWorksheets()[1].applyFilterAsync('Role', 'Licensed Staff', tableauSoftware.FilterUpdateType.REPLACE); 

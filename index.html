@@ -71,30 +71,29 @@ responsiveVoice.speak('Hello Cody Welcome to your dashboard','US English Female'
 //Make Character selection
 function selectVader()
 	{
-	activeSheet.getWorksheets()[1].applyFilterAsync('Role', 'All', tableauSoftware.FilterUpdateType.REPLACE); 
+	activeSheet.applyFilterAsync('Role', 'All', tableauSoftware.FilterUpdateType.REPLACE); 
 
 	}
 
 function selectYoda()
 	{
-	activeSheet.getWorksheets()[1].applyFilterAsync('Role', 'Licensed Staff', tableauSoftware.FilterUpdateType.REPLACE); 
+	activeSheet.applyFilterAsync('Role', 'Licensed Staff', tableauSoftware.FilterUpdateType.REPLACE); 
 	}
 
 function selectSolo()
 	{
-	activeSheet.getWorksheets()[1].applyFilterAsync('Role', 'Unlicensed Staff', tableauSoftware.FilterUpdateType.REPLACE); 
+	activeSheet.applyFilterAsync('Role', 'Unlicensed Staff', tableauSoftware.FilterUpdateType.REPLACE); 
 	}	
 
 function selectLuke()
 	{
-	activeSheet.getWorksheets()[1].applyFilterAsync('Role', 'Untagged', tableauSoftware.FilterUpdateType.REPLACE); 
+	activeSheet.applyFilterAsync('Role', 'Untagged', tableauSoftware.FilterUpdateType.REPLACE); 
 	}	
 	
 //Start Viz Over
 function startover()
 	{
-		responsiveVoice.speak('Working')
-	viz.revertAllAsync();
+		activeSheet.applyFilterAsync('Role', 'All', tableauSoftware.FilterUpdateType.REPLACE); 
 	}
 
 </script>

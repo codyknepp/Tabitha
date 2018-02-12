@@ -20,7 +20,7 @@
 
 <body onload=initializeViz();>
 <h1>"QStream Activity" by Agency Ops  - With Alexa</h1>
-	<h1>Version 2:30</h1>
+	<h1>Version 2:32</h1>
 Say: <i>"Select Licensed Staff" and "start over"</i>
 <br>
 <br>
@@ -73,12 +73,12 @@ responsiveVoice.speak('Hello Cody Welcome to your dashboard','US English Female'
 //Make Character selection
 function selectVader()
 	{
-	activeSheet.applyFilterAsync("Role", "All", tableauSoftware.FilterUpdateType.REPLACE); 
+	activeSheet.getWorksheets()[1].applyFilterAsync("Role", "All", tableauSoftware.FilterUpdateType.REPLACE); 
 
 	}
 function selectCohort()
 	{
-	activeSheet.applyFilterAsync("Cohort", "All", tableauSoftware.FilterUpdateType.REPLACE); 
+	activeSheet.getWorksheets()[1].applyFilterAsync("Cohort", "All", tableauSoftware.FilterUpdateType.REPLACE); 
 
 	}
 function selectYoda()

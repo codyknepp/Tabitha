@@ -21,7 +21,7 @@
 
 <body onload=initializeViz();>
 <h1>"QStream Activity" by Agency Ops  - With Alexa</h1>
-	<h1>Version 2:39</h1>
+	<h1>Version 2:42</h1>
 Say: <i>"Select Licensed Staff" and "start over"</i>
 <br>
 <br>
@@ -48,23 +48,24 @@ Say: <i>"Select Licensed Staff" and "start over"</i>
 <script>
 var viz, workbook, activeSheet, Worksheet, worksheet;
 
-
-function initializeViz() {
-  var placeholderDiv = document.getElementById("tableauViz");
-  var url = "https://public.tableau.com/shared/BMX3ZXDHF?:display_count=yes";
-  var options = {
-    width: placeholderDiv.offsetWidth,
-    height: placeholderDiv.offsetHeight,
-    hideTabs: true,
-    hideToolbar: true,
-    onFirstInteractive: function () {
-      workbook = viz.getWorkbook();
-      activeSheet = workbook.getActiveSheet();
-    }
-  };
-  viz = new tableau.Viz(placeholderDiv, url, options);
-} 	
 	
+function initializeViz(){
+
+var placeholderDiv = document.getElementById("tableauViz");
+
+var url = "https://public.tableau.com/shared/BMX3ZXDHF?:display_count=ye";
+var options = {
+   width: "1004",   
+   height: "869",
+   hideTabs: true,
+   hideToolbar: true,
+  onFirstInteractive: function () {
+  workbook = viz.getWorkbook();
+  activeSheet = workbook.getActiveSheet();
+}
+};
+  viz = new tableauSoftware.Viz(placeholderDiv, url, options);
+}
 	
 	
 

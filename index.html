@@ -14,7 +14,8 @@
 		<script src="annyang.min.js"></script> <!-- Voice Recognition -->
 		<script src="responsivevoice.js"></script> <!-- Voice Response -->
 		
-		<script src="https://public.tableausoftware.com/javascripts/api/tableau-2.min.js " type="text/javascript"></script> 
+		<script type="text/javascript" src="http://public.tableau.com/javascripts/api/tableau-2.0.0.min.js"></script>
+
 
 </head>	
 
@@ -46,23 +47,26 @@ Say: <i>"Select Licensed Staff" and "start over"</i>
 
 <script>
 var viz, workbook, activeSheet, Worksheet, worksheet;
-function initializeViz(){
 
-var placeholderDiv = document.getElementById("tableauViz");
 
-var url = "https://public.tableau.com/shared/BMX3ZXDHF?:display_count=yes";
-var options = {
-   width: "1004",   
-   height: "869",
-   hideTabs: true,
-   hideToolbar: true,
-  onFirstInteractive: function () {
-  workbook = viz.getWorkbook();
-  activeSheet = workbook.getActiveSheet();
-}
-};
-  viz = new tableauSoftware.Viz(placeholderDiv, url, options);
-}
+function initializeViz() {
+  var placeholderDiv = document.getElementById("tableauViz");
+  var url = "https://public.tableau.com/shared/BMX3ZXDHF?:display_count=yes";
+  var options = {
+    width: placeholderDiv.offsetWidth,
+    height: placeholderDiv.offsetHeight,
+    hideTabs: true,
+    hideToolbar: true,
+    onFirstInteractive: function () {
+      workbook = viz.getWorkbook();
+      activeSheet = workbook.getActiveSheet();
+    }
+  };
+  viz = new tableau.Viz(placeholderDiv, url, options);
+} 	
+	
+	
+	
 
 //Tabitha says hello
 responsiveVoice.speak('Hello Cody Welcome to your dashboard','US English Female');

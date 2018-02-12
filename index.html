@@ -28,11 +28,11 @@ Say: <i>"Select Licensed Staff" and "start over"</i>
 <script>
   // These are the voice commands in quotes followed by the function
   var commands = {
-  	'Tabitha Select All role': function() { selectVader(); responsiveVoice.speak('selecting all role'); },
- 	'Tabitha Select Licensed Staff role': function() { selectSolo(); responsiveVoice.speak('selecting Licensed Staff role'); },
- 	'Tabitha Select Unlicensed Staff role': function() { selectYoda(); responsiveVoice.speak('selecting Unlicensed Staff role'); },
- 	'Tabitha Select Untagged role': function() { selectLuke(); responsiveVoice.speak('selecting Untagged role'); },
-	'Tabitha start over': function() { startover(); responsiveVoice.speak('starting over'); }
+  	'Tabitha Select All role': function() { selectVader(); responsiveVoice.speak('selecting all role','US English Female'); },
+ 	'Tabitha Select Licensed Staff role': function() { selectSolo(); responsiveVoice.speak('selecting Licensed Staff role','US English Female'); },
+ 	'Tabitha Select Unlicensed Staff role': function() { selectYoda(); responsiveVoice.speak('selecting Unlicensed Staff role','US English Female'); },
+ 	'Tabitha Select Untagged role': function() { selectLuke(); responsiveVoice.speak('selecting Untagged role','US English Female'); },
+	'Tabitha start over': function() { startover(); responsiveVoice.speak('starting over','US English Female'); }
  };
   
   // Add commands to annyang
@@ -64,7 +64,7 @@ var options = {
 }
 
 //Tabitha says hello
-responsiveVoice.speak('Hello Cody Welcome to your dashboard');
+responsiveVoice.speak('Hello Cody Welcome to your dashboard','US English Female');
 
 
 //Make Character selection

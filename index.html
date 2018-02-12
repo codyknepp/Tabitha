@@ -58,7 +58,7 @@ var options = {
   activeSheet = workbook.getActiveSheet();
 }
 };
-  viz = new tableauSoftware.Viz(placeholderDiv, url, options);
+  viz = new tableau.Viz(placeholderDiv, url, options);
 }
 
 //Tabitha says hello
@@ -66,15 +66,15 @@ responsiveVoice.speak('Hello Cody Welcome to your dashboard' activeSheet);
 
 
 //Make Character selection
-function selectVader()
+function FilterAll()
 	{
-	activeSheet.getWorksheets()[1].applyFilterAsync('Role', 'All', tableauSoftware.FilterUpdateType.REPLACE); 
+	activeSheet.applyFilterAsync('Role', 'All', tableau.FilterUpdateType.REPLACE); 
 
 	}
 
 function selectYoda()
 	{
-	activeSheet.getWorksheets()[1].applyFilterAsync('Role', 'Licensed Staff', tableauSoftware.FilterUpdateType.REPLACE); 
+	activeSheet.applyFilterAsync('Role', 'Licensed Staff', tableau.FilterUpdateType.REPLACE); 
 	}
 
 function selectSolo()

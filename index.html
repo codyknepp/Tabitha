@@ -1,4 +1,3 @@
-
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -79,9 +78,11 @@
     <div class="row">
       <div class="col-md-16 col-sm-16">
       <div class="col-md-3 col-sm-3"> <i class="fa fa-microphone"></i>
-        <h4>&nbsp;&nbsp;Tableau Alexa Integration - V2:35</h4>
-		<h4>National Activity Report</h4>
-        <p>Try using phrases such as "Select Northeast Region", or "Select Month of Janaury" .</p>
+        <h4>&nbsp;&nbsp;Tableau Alexa Integration</h4>
+        <p>Try using phrases such as "Select Northeast Region", "Select Year 2018" or "Filter Month to Janaury" .</p>
+		<br>
+			<h4>National Activity Report Overview</h4>
+		<!--<button type="button" onclick="selectCalifornia()">Paremeter Change</button>-->
       </div>
 	   <div class="col-md-4 col-sm-4"> 
 		   	<p></p>
@@ -100,7 +101,8 @@
   // These are the voice commands in quotes followed by the function
   var commands = {
 	'Hi Alexa': function() { selectHello(); responsiveVoice.speak('Hello Cody'); }, 
-	'How are you today': function() { selectHello(); responsiveVoice.speak('I am doing well thank you for asking'); },   
+	'How are you today': function() { selectToday(); responsiveVoice.speak('I am doing well thank you for asking'); },  
+	'Alexa give me an ovierview': function() { selectOverview(); responsiveVoice.speak(''); },  
   	'Select All Regions': function() { selectAllRegions(); responsiveVoice.speak('selecting all regions'); },
 	'Select California Region': function() { selectCalifornia(); responsiveVoice.speak('selecting California region'); },
 	'Select Capital Region': function() { selectCapital(); responsiveVoice.speak('selecting Capital region'); },
@@ -118,10 +120,23 @@
 	'Select Southwest Region': function() { selectSouthwest(); responsiveVoice.speak('selecting Southwest region'); },
 	'Select Texas Region': function() { selectTexas(); responsiveVoice.speak('selecting Texas region'); },
 	'Select West Central Region': function() { selectWestCentral(); responsiveVoice.speak('selecting West Central Region'); },
-
+	// Years
  	'Select Year Twenty Sixteen': function() { select2016(); responsiveVoice.speak('selecting Year 2018'); },
 	'Select Year Twenty Seventeen': function() { select2017(); responsiveVoice.speak('selecting Year 2017'); },
 	'Select Year Twenty Eighteeen': function() { select2018(); responsiveVoice.speak('selecting Year 2018'); },
+	//Months
+	'Filter month to January': function() { selectJanuary(); responsiveVoice.speak('filtering month to January'); },
+	'Filter month to February': function() { selectFebruary(); responsiveVoice.speak('filtering month to February'); },
+	'Filter month to March': function() { selectMarch(); responsiveVoice.speak('filtering month to March'); },
+	'Filter month to April': function() { selectApril(); responsiveVoice.speak('filtering month to April'); },
+	'Filter month to May': function() { selectMay(); responsiveVoice.speak('filtering month to May'); },
+	'Filter month to June': function() { selectJune(); responsiveVoice.speak('filtering month to June'); },
+	'Filter month to July': function() { selectJuly(); responsiveVoice.speak('filtering month to July'); },
+	'Filter month to August': function() { selectAugust(); responsiveVoice.speak('filtering month to August'); },
+	'Filter month to September': function() { selecSeptember(); responsiveVoice.speak('filtering month to September'); },
+	'Filter month to October': function() { selectOctober(); responsiveVoice.speak('filtering month to October'); },
+	'Filter month to November': function() { selectNovember(); responsiveVoice.speak('filtering month to November'); },
+	'Filter month to December': function() { selectDecember(); responsiveVoice.speak('filtering month to December'); },
 
 	'start over': function() { startover(); responsiveVoice.speak('starting over'); }
  };
@@ -142,10 +157,12 @@ var placeholderDiv = document.getElementById("tableauViz");
 
 var url = "https://public.tableau.com/views/National_Activity_Report_ALEXA/NationalProgramActivityReport?:embed=y&:display_count=yes&publish=yes";
 var options = {
-	'Region Parameter', 'California',
+
 
    hideTabs: true,
    hideToolbar: true,
+
+
   onFirstInteractive: function () {
   workbook = viz.getWorkbook();
   activeSheet = workbook.getActiveSheet();
@@ -157,103 +174,197 @@ var options = {
 
 //Tabitha says hello
 responsiveVoice.speak('Welcome to the Agency Ops Tableau Alexa Integration');
+selectCalifornia();
 
-
-//Make Tableau selection
+//Make Character selection
 function selectHello()
 	{
 
 	}
 function selectToday()
 	{
-	
 	}
+
+function selectOverview ()
+{
+	responsiveVoice.speak('12 of the 14 regions saw enrollment increase over the previous year, with the largest increase occurring in the Florida region 68%.' +
+	'Of the two regions with decreasing enrollment, the West Central region saw the biggest decline of -15%.' +
+	'Enrollment nationwide have increased 21% from last year at this time' +
+	'National School had the highest satisfaction rate this month with a score of  98%' +
+	'Targeted Topics satisfactio rate is down to 88% from last years 93%');
+}
+
 function selectAllRegions()
 	{
 	activeSheet.getWorksheets()[1].changeParameterValueAsync('Region Parameter', 'All', tableauSoftware.FilterUpdateType.REPLACE); 
 	}
+
+
 function selectCalifornia()
-	{
-	activeSheet.getWorksheets()[1].changeParameterValueAsync('Region Parameter', 'California', tableauSoftware.FilterUpdateType.REPLACE); 
-	}
+{ 
+	workbook = viz.getWorkbook();
+	workbook.changeParameterValueAsync('Region Parameter',  'California');
+}
+
 function selectCapital()
 	{
-	activeSheet.getWorksheets()[1].applyFilterAsync('Region Parameter', 'Capital', tableauSoftware.FilterUpdateType.REPLACE); 
+	workbook = viz.getWorkbook();
+	workbook.changeParameterValueAsync('Region Parameter',  'Capital');
 	}
 function selectFlorida()
 	{
-	activeSheet.getWorksheets()[1].applyFilterAsync('Region Parameter', 'Florida', tableauSoftware.FilterUpdateType.REPLACE); 
+	workbook = viz.getWorkbook();
+	workbook.changeParameterValueAsync('Region Parameter',  'Florida');
 	}
 function selectHomeOffice()
 	{
-	activeSheet.getWorksheets()[1].applyFilterAsync('Region Parameter', 'Home Office', tableauSoftware.FilterUpdateType.REPLACE); 
+	workbook = viz.getWorkbook();
+	workbook.changeParameterValueAsync('Region Parameter',  'Home Office');
 	}
 function selectMidwest()
 	{
-	activeSheet.getWorksheets()[1].applyFilterAsync('Region Parameter', 'Midwest', tableauSoftware.FilterUpdateType.REPLACE); 
+		workbook = viz.getWorkbook();
+	workbook.changeParameterValueAsync('Region Parameter',  'Midwest');
 	}
 function selectNewJersey()
 	{
-	activeSheet.getWorksheets()[1].applyFilterAsync('Region Parameter', 'New Jersey', tableauSoftware.FilterUpdateType.REPLACE); 
+	workbook = viz.getWorkbook();
+	workbook.changeParameterValueAsync('Region Parameter',  'New Jersey');
 	}
 function selectNewYork()
 	{
-	activeSheet.getWorksheets()[1].applyFilterAsync('Region Parameter', 'New York', tableauSoftware.FilterUpdateType.REPLACE); 
+		workbook = viz.getWorkbook();
+	workbook.changeParameterValueAsync('Region Parameter',  'New York');
 	}
 function selectNorthCentral()
 	{
-	activeSheet.getWorksheets()[1].applyFilterAsync('Region Parameter', 'North Central', tableauSoftware.FilterUpdateType.REPLACE); 
+		workbook = viz.getWorkbook();
+	workbook.changeParameterValueAsync('Region Parameter',  'North Central');
 	}
 function selectNortheast()
 	{
-	activeSheet.getWorksheets()[1].applyFilterAsync('Region Parameter', 'Northeast', tableauSoftware.FilterUpdateType.REPLACE); 
+	workbook = viz.getWorkbook();
+	workbook.changeParameterValueAsync('Region Parameter',  'Northeast');
 	}
 function selectNorthwest()
 	{
-	activeSheet.getWorksheets()[1].applyFilterAsync('Region Parameter', 'Northwest', tableauSoftware.FilterUpdateType.REPLACE); 
+	workbook = viz.getWorkbook();
+	workbook.changeParameterValueAsync('Region Parameter',  'Northwest');
 	}
 function selectSoutheast()
 	{
-	activeSheet.getWorksheets()[1].applyFilterAsync('Region Parameter', 'Southeast', tableauSoftware.FilterUpdateType.REPLACE); 
+	workbook = viz.getWorkbook();
+	workbook.changeParameterValueAsync('Region Parameter',  'Southeast');
 	}
 function selectSouthern()
 	{
-	activeSheet.getWorksheets()[1].applyFilterAsync('Region Parameter', 'Southern', tableauSoftware.FilterUpdateType.REPLACE); 
+	workbook = viz.getWorkbook();
+	workbook.changeParameterValueAsync('Region Parameter',  'Southern');
 	}
 function selectSouthwest()
 	{
-	activeSheet.getWorksheets()[1].applyFilterAsync('Region Parameter', 'Southwest', tableauSoftware.FilterUpdateType.REPLACE); 
+	workbook = viz.getWorkbook();
+	workbook.changeParameterValueAsync('Region Parameter',  'Southwest');
 	}
 function selectTexas()
 	{
-	activeSheet.getWorksheets()[1].applyFilterAsync('Region Parameter', 'Texas', tableauSoftware.FilterUpdateType.REPLACE); 
+	workbook = viz.getWorkbook();
+	workbook.changeParameterValueAsync('Region Parameter',  'Texas');
 	}
 function selectWestCentral()
 	{
-	activeSheet.getWorksheets()[1].applyFilterAsync('Region Parameter', 'West Central', tableauSoftware.FilterUpdateType.REPLACE); 
+	workbook = viz.getWorkbook();
+	workbook.changeParameterValueAsync('Region Parameter',  'West Central');
 	}
 function select2016()
 	{
-	activeSheet.getWorksheets()[1].applyFilterAsync('Year Parameter', '2016', tableauSoftware.FilterUpdateType.REPLACE); 
+	workbook = viz.getWorkbook();
+	workbook.changeParameterValueAsync('Year Parameter',  '2016');
 	}
 function select2017()
 	{
-	activeSheet.getWorksheets()[1].applyFilterAsync('Year Parameter', '2017', tableauSoftware.FilterUpdateType.REPLACE); 
+	workbook = viz.getWorkbook();
+	workbook.changeParameterValueAsync('Year Parameter',  '2017');
 	}
 function select2018()
 	{
-	activeSheet.getWorksheets()[1].applyFilterAsync('Year Parameter', '2018', tableauSoftware.FilterUpdateType.REPLACE); 
+	workbook = viz.getWorkbook();
+	workbook.changeParameterValueAsync('Year Parameter',  '2018');
 	}
-	
+
+
+function selectJanuary()
+	{
+	workbook = viz.getWorkbook();
+	workbook.changeParameterValueAsync('Crs Month Parameter',  'January');
+	}
+function selectFebruary()
+	{
+	workbook = viz.getWorkbook();
+	workbook.changeParameterValueAsync('Crs Month Parameter',  'February');
+}
+function selectMarch()
+	{
+	workbook = viz.getWorkbook();
+	workbook.changeParameterValueAsync('Crs Month Parameter',  'March');
+}
+function selectApril()
+	{
+	workbook = viz.getWorkbook();
+	workbook.changeParameterValueAsync('Crs Month Parameter',  'April');
+}
+function selectMay()
+	{
+	workbook = viz.getWorkbook();
+	workbook.changeParameterValueAsync('Crs Month Parameter',  'May');
+}
+function selectJune()
+	{
+	workbook = viz.getWorkbook();
+	workbook.changeParameterValueAsync('Crs Month Parameter',  'June');
+}
+function selectJuly()
+	{
+	workbook = viz.getWorkbook();
+	workbook.changeParameterValueAsync('Crs Month Parameter',  'July');
+	}
+function selectAugust()
+	{
+	workbook = viz.getWorkbook();
+	workbook.changeParameterValueAsync('Crs Month Parameter',  'August');
+	}
+function selectSeptember()
+	{
+	workbook = viz.getWorkbook();
+	workbook.changeParameterValueAsync('Crs Month Parameter',  'September');
+	}
+function selectOctober()
+	{
+	workbook = viz.getWorkbook();
+	workbook.changeParameterValueAsync('Crs Month Parameter',  'October');
+	}
+function selectNovember()
+	{
+	workbook = viz.getWorkbook();
+	workbook.changeParameterValueAsync('Crs Month Parameter',  'November');
+	}
+function selectDecember()
+	{
+	workbook = viz.getWorkbook();
+	workbook.changeParameterValueAsync('Crs Month Parameter',  'December');
+	}
+
 //Start Viz Over
 function startover()
 	{
 		responsiveVoice.speak('Resetting the dashboard')
 	viz.revertAllAsync();
+	viz.refreshDataAsync();
 	}
 
 </script>
 
 </body>
 </html>		
+		
 		

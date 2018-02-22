@@ -79,7 +79,7 @@
     <div class="row">
       <div class="col-md-16 col-sm-16">
       <div class="col-md-3 col-sm-3"> <i class="fa fa-microphone"></i>
-        <h4>&nbsp;&nbsp;Tableau Alexa Integration - V2:25</h4>
+        <h4>&nbsp;&nbsp;Tableau Alexa Integration - V2:35</h4>
 		<h4>National Activity Report</h4>
         <p>Try using phrases such as "Select Northeast Region", or "Select Month of Janaury" .</p>
       </div>
@@ -142,7 +142,7 @@ var placeholderDiv = document.getElementById("tableauViz");
 
 var url = "https://public.tableau.com/views/National_Activity_Report_ALEXA/NationalProgramActivityReport?:embed=y&:display_count=yes&publish=yes";
 var options = {
-	'Appointment1': 'Unlicensed Staff',
+	'Region Parameter', 'California',
 
    hideTabs: true,
    hideToolbar: true,
@@ -170,11 +170,11 @@ function selectToday()
 	}
 function selectAllRegions()
 	{
-	activeSheet.applyFilterAsync('Region Parameter', 'All', tableauSoftware.FilterUpdateType.REPLACE); 
+	activeSheet.getWorksheets()[1].changeParameterValueAsync('Region Parameter', 'All', tableauSoftware.FilterUpdateType.REPLACE); 
 	}
 function selectCalifornia()
 	{
-	activeSheet.applyFilterAsync('Region Parameter', 'California', tableauSoftware.FilterUpdateType.REPLACE); 
+	activeSheet.getWorksheets()[1].changeParameterValueAsync('Region Parameter', 'California', tableauSoftware.FilterUpdateType.REPLACE); 
 	}
 function selectCapital()
 	{

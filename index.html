@@ -170,11 +170,11 @@ function selectToday()
 	}
 function selectAllRegions()
 	{
-	activeSheet.getWorksheets()[1].applyFilterAsync('Region Parameter', 'All', tableauSoftware.FilterUpdateType.REPLACE); 
+	activeSheet.applyFilterAsync('Region Parameter', 'All', tableauSoftware.FilterUpdateType.REPLACE); 
 	}
 function selectCalifornia()
 	{
-	activeSheet.getWorksheets()[1].applyFilterAsync('Region Parameter', 'California', tableauSoftware.FilterUpdateType.REPLACE); 
+	activeSheet.applyFilterAsync('Region Parameter', 'California', tableauSoftware.FilterUpdateType.REPLACE); 
 	}
 function selectCapital()
 	{

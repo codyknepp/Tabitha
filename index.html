@@ -99,6 +99,8 @@
 <script>
   // These are the voice commands in quotes followed by the function
   var commands = {
+	'Hi Alexa': function() { selectHello(); responsiveVoice.speak('Hello Cody'); }, 
+	'How are you today': function() { selectHello(); responsiveVoice.speak('I am doing well thank you for asking'); },   
   	'Select All Regions': function() { selectAllRegions(); responsiveVoice.speak('selecting all regions'); },
 	'Select California Region': function() { selectCalifornia(); responsiveVoice.speak('selecting California region'); },
 	'Select Capital Region': function() { selectCapital(); responsiveVoice.speak('selecting Capital region'); },
@@ -157,7 +159,15 @@ var options = {
 responsiveVoice.speak('Welcome to the Agency Ops Tableau Alexa Integration');
 
 
-//Make Character selection
+//Make Tableau selection
+function selectHello()
+	{
+
+	}
+function selectToday()
+	{
+	
+	}
 function selectAllRegions()
 	{
 	activeSheet.getWorksheets()[1].applyFilterAsync('Region Parameter', 'All', tableauSoftware.FilterUpdateType.REPLACE); 

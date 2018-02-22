@@ -18,8 +18,8 @@
 
 <body onload=initializeViz();>
 <h1>"QStream Activity" by Agency Ops  - With Alexa</h1>
-	<h1>Version 10:03</h1>
-Say: <i>"Select Licensed Staff" and "start over"</i>
+	<h1>Version 10:07</h1>
+Say: <i>"Select Licensed Staff" or "'Select Licensed Staff role" or "start over"</i>
 <br>
 <br>
 <center><div id='tableauViz'></div></center>
@@ -71,7 +71,7 @@ responsiveVoice.speak('Welcome to Allstate Agency Ops QStream Dashboard');
 //Make Character selection
 function selectVader()
 	{
-	activeSheet.getWorksheets()[1].applyFilterAsync('Appointment1', 'All', tableauSoftware.FilterUpdateType.REPLACE); 
+	activeSheet.getWorksheets()[1].applyFilterAsync('Appointment1', '(All)', tableauSoftware.FilterUpdateType.REPLACE); 
 
 	}
 

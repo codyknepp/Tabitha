@@ -1,3 +1,4 @@
+
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -6,31 +7,120 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="description" content="Creating Tabitha">
-		<meta name="author" content="Jeffrey Shaffer">
+		<meta name="description" content="Tableau and Alexa">
+		<meta name="author" content="Cody Knepp">
 
 		<script src="annyang.min.js"></script> <!-- Voice Recognition -->
 		<script src="responsivevoice.js"></script> <!-- Voice Response -->
 		
 		<script src="https://public.tableausoftware.com/javascripts/api/tableau-2.min.js " type="text/javascript"></script> 
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		    <!-- stylesheet css -->
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/nivo-lightbox.css">
+		<link rel="stylesheet" href="css/nivo_themes/default/default.css">
+		<link rel="stylesheet" href="css/templatemo-style.css">
+		<!-- google web font css -->
+		<link href='http://fonts.googleapis.com/css?family=Raleway:400,300,600,700' rel='stylesheet' type='text/css'>
 
 </head>	
 
-<body onload=initializeViz();>
-<h1>"QStream Activity" by Agency Ops  - With Alexa</h1>
-	<h1>Version 10:11</h1>
-Say: <i>"Select Licensed Staff" or "'Select Licensed Staff role" or "start over"</i>
-<br>
-<br>
-<center><div id='tableauViz'></div></center>
+<body onload=initializeViz(); data-spy="scroll" data-target=".navbar-collapse" id="top">
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+    	
+        <!--Logo goes here -->
+      <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon icon-bar"></span> <span class="icon icon-bar"></span> <span class="icon icon-bar"></span></button>
+
+   </div>
+      <!--End logo code -->
+      
+    <div class="collapse navbar-collapse">
+    
+      <ul class="nav navbar-nav navbar-left" >
+      	<li><a href="index.html"><img src="images/Allstate_logo.jpg" alt="AGENCY OPS EDUCATION" style="width:260px; height:50px;"></a>  
+        <li><a href="index.html" class="smoothScroll">HOME</a></li>
+        <!--<li><a href="InteractiveCourses.html" class="smoothScroll">INTERACTIVE COURSES</a></li>-->
+        <li><a href="TrainingVideos.html" class="smoothScroll">ACTIVITY REPORT</a></li>
+        <li><a href="AddResources.html" class="smoothScroll">COURSE SATISFACTION</a></li>
+        <li><a href="AutoNewHire.html" class="smoothScroll">NATIONAL SCHOOL NPS</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<!-- divider section -->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-1 col-sm-1"></div>
+    <div class="col-md-10 col-sm-10">
+      <hr>
+    </div>
+    <div class="col-md-1 col-sm-1"></div>
+  </div>
+</div>
+
+<!-- divider section -->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-1 col-sm-1"></div>
+    <div class="col-md-10 col-sm-10">
+      <hr>
+    </div>
+    <div class="col-md-1 col-sm-1"></div>
+  </div>
+</div>
+<!-- service section -->
+<div id="service">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-16 col-sm-16">
+      <div class="col-md-3 col-sm-3"> <i class="fa fa-microphone"></i>
+        <h4>&nbsp;&nbsp;Tableau Alexa Integration</h4>
+		<h4>National Activity Report</h4>
+        <p>Try using phrases such as "Select Northeast Region", or "Select Month of Janaury" .</p>
+      </div>
+	   <div class="col-md-4 col-sm-4"> 
+		   	<p></p>
+      </div>
+      <div class="col-md-8 col-sm-8"> 
+       
+		<center><div id='tableauViz'></div></center>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
 
 <script>
   // These are the voice commands in quotes followed by the function
   var commands = {
-  	'Select All role': function() { startover(); responsiveVoice.speak('selecting all role'); },
- 	'Select Licensed role': function() { selectSolo(); responsiveVoice.speak('selecting Licensed Staff role'); },
- 	'Select Unlicensed role': function() { selectYoda(); responsiveVoice.speak('selecting Unlicensed Staff role'); },
- 	'Select Untagged role': function() { selectLuke(); responsiveVoice.speak('selecting Untagged role'); },
+  	'Select All Regions': function() { selectAllRegions(); responsiveVoice.speak('selecting all regions'); },
+	'Select California Region': function() { selectCalifornia(); responsiveVoice.speak('selecting California region'); },
+	'Select Capital Region': function() { selectCapital(); responsiveVoice.speak('selecting Capital region'); },
+	'Select Florida Region': function() { selectFlorida(); responsiveVoice.speak('selecting Florida region'); },
+	'Select Home Office Region': function() { selectHomeOffice(); responsiveVoice.speak('selecting Home Office region'); },
+	'Select Midwest Region': function() { selectMidwest(); responsiveVoice.speak('selecting Midwest region'); },
+	'Select New Jersey Region': function() { selectNewJersey(); responsiveVoice.speak('selecting New Jersey region'); },
+	'Select New York Region': function() { selectNewYork(); responsiveVoice.speak('selecting New York  region'); },
+	'Select North Central Region': function() { selectNorthCentral(); responsiveVoice.speak('selecting North Central region'); },
+	'Select Northeast Region': function() { selectNortheast(); responsiveVoice.speak('selecting Northeast region'); },
+	'Select Northwest Region': function() { selectNorthwest(); responsiveVoice.speak('selecting Northwest region'); },
+	'Select Southeast Region': function() { selectSoutheast(); responsiveVoice.speak('selecting Southeast region'); },
+	'Select Southwest Region': function() { selectSouthwest(); responsiveVoice.speak('selecting Southwest region'); },
+	'Select Southern Region': function() { selectSouthern(); responsiveVoice.speak('selecting Southern region'); },
+	'Select Southwest Region': function() { selectSouthwest(); responsiveVoice.speak('selecting Southwest region'); },
+	'Select Texas Region': function() { selectTexas(); responsiveVoice.speak('selecting Texas region'); },
+	'Select West Central Region': function() { selectWestCentral(); responsiveVoice.speak('selecting West Central Region'); },
+
+ 	'Select Year Twenty Sixteen': function() { select2016(); responsiveVoice.speak('selecting Year 2018'); },
+	'Select Year Twenty Seventeen': function() { select2017(); responsiveVoice.speak('selecting Year 2017'); },
+	'Select Year Twenty Eighteeen': function() { select2018(); responsiveVoice.speak('selecting Year 2018'); },
+
 	'start over': function() { startover(); responsiveVoice.speak('starting over'); }
  };
   
@@ -48,11 +138,10 @@ function initializeViz(){
 
 var placeholderDiv = document.getElementById("tableauViz");
 
-var url = "https://public.tableau.com/shared/BMX3ZXDHF?:display_count=yes";
+var url = "https://public.tableau.com/views/National_Activity_Report_ALEXA/NationalProgramActivityReport?:embed=y&:display_count=yes&publish=yes";
 var options = {
 	'Appointment1': 'Unlicensed Staff',
-   width: "1004",   
-   height: "869",
+
    hideTabs: true,
    hideToolbar: true,
   onFirstInteractive: function () {
@@ -65,36 +154,91 @@ var options = {
 }
 
 //Tabitha says hello
-responsiveVoice.speak('Welcome to Allstate Agency Ops QStream Dashboard');
+responsiveVoice.speak('Welcome to the Allstate Agency Ops Dashboard ');
 
 
 //Make Character selection
-function selectVader()
+function selectAllRegions()
 	{
-	activeSheet.getWorksheets()[1].applyFilterAsync('Appointment1', '(All)', tableauSoftware.FilterUpdateType.REPLACE); 
-
+	activeSheet.getWorksheets()[1].applyFilterAsync('Region Parameter', 'All', tableauSoftware.FilterUpdateType.REPLACE); 
 	}
-
-function selectYoda()
+function selectCalifornia()
 	{
-	activeSheet.getWorksheets()[1].applyFilterAsync('Appointment1', 'Licensed Staff', tableauSoftware.FilterUpdateType.REPLACE); 
+	activeSheet.getWorksheets()[1].applyFilterAsync('Region Parameter', 'California', tableauSoftware.FilterUpdateType.REPLACE); 
 	}
-
-function selectSolo()
+function selectCapital()
 	{
-	activeSheet.applyFilterAsync('Appointment1', 'Unlicensed Staff', tableauSoftware.FilterUpdateType.REPLACE); 
-
-	}	
-
-function selectLuke()
+	activeSheet.getWorksheets()[1].applyFilterAsync('Region Parameter', 'Capital', tableauSoftware.FilterUpdateType.REPLACE); 
+	}
+function selectFlorida()
 	{
-	activeSheet.getWorksheets()[1].applyFilterAsync('Appointment1', 'Untagged', tableauSoftware.FilterUpdateType.REPLACE); 
-	}	
+	activeSheet.getWorksheets()[1].applyFilterAsync('Region Parameter', 'Florida', tableauSoftware.FilterUpdateType.REPLACE); 
+	}
+function selectHomeOffice()
+	{
+	activeSheet.getWorksheets()[1].applyFilterAsync('Region Parameter', 'Home Office', tableauSoftware.FilterUpdateType.REPLACE); 
+	}
+function selectMidwest()
+	{
+	activeSheet.getWorksheets()[1].applyFilterAsync('Region Parameter', 'Midwest', tableauSoftware.FilterUpdateType.REPLACE); 
+	}
+function selectNewJersey()
+	{
+	activeSheet.getWorksheets()[1].applyFilterAsync('Region Parameter', 'New Jersey', tableauSoftware.FilterUpdateType.REPLACE); 
+	}
+function selectNewYork()
+	{
+	activeSheet.getWorksheets()[1].applyFilterAsync('Region Parameter', 'New York', tableauSoftware.FilterUpdateType.REPLACE); 
+	}
+function selectNorthCentral()
+	{
+	activeSheet.getWorksheets()[1].applyFilterAsync('Region Parameter', 'North Central', tableauSoftware.FilterUpdateType.REPLACE); 
+	}
+function selectNortheast()
+	{
+	activeSheet.getWorksheets()[1].applyFilterAsync('Region Parameter', 'Northeast', tableauSoftware.FilterUpdateType.REPLACE); 
+	}
+function selectNorthwest()
+	{
+	activeSheet.getWorksheets()[1].applyFilterAsync('Region Parameter', 'Northwest', tableauSoftware.FilterUpdateType.REPLACE); 
+	}
+function selectSoutheast()
+	{
+	activeSheet.getWorksheets()[1].applyFilterAsync('Region Parameter', 'Southeast', tableauSoftware.FilterUpdateType.REPLACE); 
+	}
+function selectSouthern()
+	{
+	activeSheet.getWorksheets()[1].applyFilterAsync('Region Parameter', 'Southern', tableauSoftware.FilterUpdateType.REPLACE); 
+	}
+function selectSouthwest()
+	{
+	activeSheet.getWorksheets()[1].applyFilterAsync('Region Parameter', 'Southwest', tableauSoftware.FilterUpdateType.REPLACE); 
+	}
+function selectTexas()
+	{
+	activeSheet.getWorksheets()[1].applyFilterAsync('Region Parameter', 'Texas', tableauSoftware.FilterUpdateType.REPLACE); 
+	}
+function selectWestCentral()
+	{
+	activeSheet.getWorksheets()[1].applyFilterAsync('Region Parameter', 'West Central', tableauSoftware.FilterUpdateType.REPLACE); 
+	}
+function select2016()
+	{
+	activeSheet.getWorksheets()[1].applyFilterAsync('Year Parameter', '2016', tableauSoftware.FilterUpdateType.REPLACE); 
+	}
+function select2017()
+	{
+	activeSheet.getWorksheets()[1].applyFilterAsync('Year Parameter', '2017', tableauSoftware.FilterUpdateType.REPLACE); 
+	}
+function select2018()
+	{
+	activeSheet.getWorksheets()[1].applyFilterAsync('Year Parameter', '2018', tableauSoftware.FilterUpdateType.REPLACE); 
+	}
 	
 //Start Viz Over
 function startover()
 	{
-		responsiveVoice.speak('Working')
+		responsiveVoice.speak('Resetting the dashboard')
 	viz.revertAllAsync();
 	}
 
@@ -102,3 +246,4 @@ function startover()
 
 </body>
 </html>		
+		

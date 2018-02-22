@@ -27,9 +27,9 @@ Say: <i>"Select Licensed Staff" or "'Select Licensed Staff role" or "start over"
 <script>
   // These are the voice commands in quotes followed by the function
   var commands = {
-  	'Select All role': function() { selectVader(); responsiveVoice.speak('selecting all role'); },
- 	'Select Licensed Staff role': function() { selectSolo(); responsiveVoice.speak('selecting Licensed Staff role'); },
- 	'Select Unlicensed Staff role': function() { selectYoda(); responsiveVoice.speak('selecting Unlicensed Staff role'); },
+  	'Select All role': function() { startover(); responsiveVoice.speak('selecting all role'); },
+ 	'Select Licensed role': function() { selectSolo(); responsiveVoice.speak('selecting Licensed Staff role'); },
+ 	'Select Unlicensed role': function() { selectYoda(); responsiveVoice.speak('selecting Unlicensed Staff role'); },
  	'Select Untagged role': function() { selectLuke(); responsiveVoice.speak('selecting Untagged role'); },
 	'start over': function() { startover(); responsiveVoice.speak('starting over'); }
  };

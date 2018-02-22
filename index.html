@@ -1,5 +1,3 @@
-
-
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -16,7 +14,6 @@
 		
 		<script src="https://public.tableausoftware.com/javascripts/api/tableau-2.min.js " type="text/javascript"></script> 
 
-
 </head>	
 
 <body onload=initializeViz();>
@@ -30,11 +27,11 @@ Say: <i>"Select Licensed Staff" and "start over"</i>
 <script>
   // These are the voice commands in quotes followed by the function
   var commands = {
-  	'Tabitha Select All role': function() { selectVader(); responsiveVoice.speak('selecting all role','US English Female'); },
- 	'Tabitha Select Licensed Staff role': function() { selectSolo(); responsiveVoice.speak('selecting Licensed Staff role','US English Female'); },
- 	'Tabitha Select Unlicensed Staff role': function() { selectYoda(); responsiveVoice.speak('selecting Unlicensed Staff role','US English Female'); },
- 	'Tabitha Select Untagged role': function() { selectLuke(); responsiveVoice.speak('selecting Untagged role','US English Female'); },
-	'Tabitha start over': function() { startover(); responsiveVoice.speak('starting over','US English Female'); }
+  	'Select All role': function() { selectVader(); responsiveVoice.speak('selecting all role'); },
+ 	'Select Licensed Staff role': function() { selectSolo(); responsiveVoice.speak('selecting Licensed Staff role'); },
+ 	'Select Unlicensed Staff role': function() { selectYoda(); responsiveVoice.speak('selecting Unlicensed Staff role'); },
+ 	'Select Untagged role': function() { selectLuke(); responsiveVoice.speak('selecting Untagged role'); },
+	'start over': function() { startover(); responsiveVoice.speak('starting over'); }
  };
   
   // Add commands to annyang
@@ -47,14 +44,13 @@ Say: <i>"Select Licensed Staff" and "start over"</i>
 
 <script>
 var viz, workbook, activeSheet, Worksheet, worksheet;
-
-	
 function initializeViz(){
 
 var placeholderDiv = document.getElementById("tableauViz");
 
-var url = "https://public.tableau.com/shared/BMX3ZXDHF?:display_count=ye";
+var url = "https://public.tableau.com/shared/BMX3ZXDHF?:display_count=yes";
 var options = {
+	'Appointment1': 'Unlicensed Staff',
    width: "1004",   
    height: "869",
    hideTabs: true,
@@ -62,52 +58,47 @@ var options = {
   onFirstInteractive: function () {
   workbook = viz.getWorkbook();
   activeSheet = workbook.getActiveSheet();
+
 }
 };
   viz = new tableauSoftware.Viz(placeholderDiv, url, options);
 }
-	
-	
 
 //Tabitha says hello
-responsiveVoice.speak('Hello Cody Welcome to your dashboard','US English Female');
+responsiveVoice.speak('Welcome to Allstate Agency Ops QStream Dashboard');
 
-	function() { selectYoda();}
-	selectCohort();
 
 //Make Character selection
 function selectVader()
 	{
-	activeSheet.getWorksheets()[1].applyFilterAsync("Role", "All", tableauSoftware.FilterUpdateType.REPLACE); 
+	activeSheet.getWorksheets()[1].applyFilterAsync('Appointment1', 'All', tableauSoftware.FilterUpdateType.REPLACE); 
 
 	}
-function selectCohort()
-	{
-	activeSheet.getWorksheets()[1].applyFilterAsync("Cohort", "All", tableauSoftware.FilterUpdateType.REPLACE); 
 
-	}
 function selectYoda()
 	{
-	activeSheet.getWorksheets()[1].applyFilterAsync('Role', 'Licensed Staff', tableauSoftware.FilterUpdateType.REPLACE); 
+	activeSheet.getWorksheets()[1].applyFilterAsync('Appointment1', 'Licensed Staff', tableauSoftware.FilterUpdateType.REPLACE); 
 	}
 
 function selectSolo()
 	{
-	activeSheet.getWorksheets()[1].applyFilterAsync('Role', 'Unlicensed Staff', tableauSoftware.FilterUpdateType.REPLACE); 
+	activeSheet.applyFilterAsync('Appointment1', 'Unlicensed Staff', tableauSoftware.FilterUpdateType.REPLACE); 
+
 	}	
 
 function selectLuke()
 	{
-	activeSheet.getWorksheets()[1].applyFilterAsync('Role', 'Untagged', tableauSoftware.FilterUpdateType.REPLACE); 
+	activeSheet.getWorksheets()[1].applyFilterAsync('Appointment1', 'Untagged', tableauSoftware.FilterUpdateType.REPLACE); 
 	}	
 	
 //Start Viz Over
 function startover()
 	{
-		activeSheet.getWorksheets()[1].applyFilterAsync('Role', 'All', tableauSoftware.FilterUpdateType.REPLACE); 
+		responsiveVoice.speak('Working')
+	viz.revertAllAsync();
 	}
 
 </script>
 
 </body>
-</html>	
+</html>		

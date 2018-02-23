@@ -105,6 +105,8 @@
 <script>
   // These are the voice commands in quotes followed by the function
   var commands = {
+	  'Alexa Open the Activity Report': function() { OpenActivity(); responsiveVoice.speak('Opening the Activity Report'); }, 
+	'Alexa go to the home page': function() { OpenHome(); responsiveVoice.speak('Opening the Home Page'); }, 
 	'Hi Alexa': function() { selectHello(); responsiveVoice.speak('Hello Cody'); }, 
 	'How are you today': function() { selectToday(); responsiveVoice.speak('I am doing well thank you for asking'); },  
 	'Alexa give me an ovierview': function() { selectOverview(); responsiveVoice.speak(''); },  

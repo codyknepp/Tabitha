@@ -1,3 +1,4 @@
+
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -40,7 +41,7 @@
     
       <ul class="nav navbar-nav navbar-left" >
       	<li><a href="index.html"><img src="images/Allstate_logo.jpg" alt="AGENCY OPS EDUCATION" style="width:260px; height:50px;"></a>  
-        <li><a href="index.html" class="smoothScroll">HOME</a></li>
+        <li><a href="Home.html" class="smoothScroll">HOME</a></li>
         <!--<li><a href="InteractiveCourses.html" class="smoothScroll">INTERACTIVE COURSES</a></li>-->
         <li><a href="TrainingVideos.html" class="smoothScroll">ACTIVITY REPORT</a></li>
         <li><a href="AddResources.html" class="smoothScroll">COURSE SATISFACTION</a></li>
@@ -79,14 +80,12 @@
       <div class="col-md-16 col-sm-16">
       <div class="col-md-3 col-sm-3"> <i class="fa fa-microphone"></i>
         <h4>&nbsp;&nbsp;Tableau Alexa Integration</h4>
-        <p>Try using phrases such as "Select Northeast Region", "Select Year 2018" or "Filter Month to Janaury" .</p>
+        <p>Try using phrases such as "Select Northeast Region" or "Filter Month to January 2018."</p>
 		<br>
-			<h4>National Activity Report Overview</h4>
+			<h4>New Agency Onboarding Highlights</h4>
 		<!--<button type="button" onclick="selectCalifornia()">Paremeter Change</button>-->
       </div>
-	   <div class="col-md-4 col-sm-4"> 
-		   	<p></p>
-      </div>
+
       <div class="col-md-8 col-sm-8"> 
        
 		<center><div id='tableauViz'></div></center>
@@ -100,9 +99,11 @@
 <script>
   // These are the voice commands in quotes followed by the function
   var commands = {
+	'Alexa Open the Activity Report': function() { OpenActivity(); responsiveVoice.speak('Opening the Activity Report'); }, 
+	'Alexa go to the home page': function() { OpenHome(); responsiveVoice.speak('Opening the Home Page'); }, 
 	'Hi Alexa': function() { selectHello(); responsiveVoice.speak('Hello Cody'); }, 
 	'How are you today': function() { selectToday(); responsiveVoice.speak('I am doing well thank you for asking'); },  
-	'Alexa give me an overview': function() { selectOverview(); responsiveVoice.speak(''); },  
+	'Alexa give me an ovierview': function() { selectOverview(); responsiveVoice.speak(''); },  
   	'Select All Regions': function() { selectAllRegions(); responsiveVoice.speak('selecting all regions'); },
 	'Select California Region': function() { selectCalifornia(); responsiveVoice.speak('selecting California region'); },
 	'Select Capital Region': function() { selectCapital(); responsiveVoice.speak('selecting Capital region'); },
@@ -120,23 +121,21 @@
 	'Select Southwest Region': function() { selectSouthwest(); responsiveVoice.speak('selecting Southwest region'); },
 	'Select Texas Region': function() { selectTexas(); responsiveVoice.speak('selecting Texas region'); },
 	'Select West Central Region': function() { selectWestCentral(); responsiveVoice.speak('selecting West Central Region'); },
-	// Years
- 	'Select Year Twenty Sixteen': function() { select2016(); responsiveVoice.speak('selecting Year 2018'); },
-	'Select Year Twenty Seventeen': function() { select2017(); responsiveVoice.speak('selecting Year 2017'); },
-	'Select Year Twenty Eighteeen': function() { select2018(); responsiveVoice.speak('selecting Year 2018'); },
+
 	//Months
-	'Filter month to January': function() { selectJanuary(); responsiveVoice.speak('filtering month to January'); },
-	'Filter month to February': function() { selectFebruary(); responsiveVoice.speak('filtering month to February'); },
-	'Filter month to March': function() { selectMarch(); responsiveVoice.speak('filtering month to March'); },
-	'Filter month to April': function() { selectApril(); responsiveVoice.speak('filtering month to April'); },
-	'Filter month to May': function() { selectMay(); responsiveVoice.speak('filtering month to May'); },
-	'Filter month to June': function() { selectJune(); responsiveVoice.speak('filtering month to June'); },
-	'Filter month to July': function() { selectJuly(); responsiveVoice.speak('filtering month to July'); },
-	'Filter month to August': function() { selectAugust(); responsiveVoice.speak('filtering month to August'); },
-	'Filter month to September': function() { selecSeptember(); responsiveVoice.speak('filtering month to September'); },
-	'Filter month to October': function() { selectOctober(); responsiveVoice.speak('filtering month to October'); },
-	'Filter month to November': function() { selectNovember(); responsiveVoice.speak('filtering month to November'); },
-	'Filter month to December': function() { selectDecember(); responsiveVoice.speak('filtering month to December'); },
+	'Filter month to January 2018': function() { selectJanuary18(); responsiveVoice.speak('filtering month to January 2018'); },
+	'Filter month to January 2017': function() { selectJanuary(); responsiveVoice.speak('filtering month to January 2017'); },
+	'Filter month to February 2017': function() { selectFebruary(); responsiveVoice.speak('filtering month to February 2017'); },
+	'Filter month to March 2017': function() { selectMarch(); responsiveVoice.speak('filtering month to March 2017'); },
+	'Filter month to April 2017': function() { selectApril(); responsiveVoice.speak('filtering month to April 2017'); },
+	'Filter month to May 2017': function() { selectMay(); responsiveVoice.speak('filtering month to May 2017'); },
+	'Filter month to June 2017': function() { selectJune(); responsiveVoice.speak('filtering month to June 2017'); },
+	'Filter month to July 2017': function() { selectJuly(); responsiveVoice.speak('filtering month to July 2017'); },
+	'Filter month to August 2017': function() { selectAugust(); responsiveVoice.speak('filtering month to August 2017'); },
+	'Filter month to September 2017': function() { selecSeptember(); responsiveVoice.speak('filtering month to September 2017'); },
+	'Filter month to October 2017': function() { selectOctober(); responsiveVoice.speak('filtering month to October 2017'); },
+	'Filter month to November 2017': function() { selectNovember(); responsiveVoice.speak('filtering month to November 2017'); },
+	'Filter month to December 2017': function() { selectDecember(); responsiveVoice.speak('filtering month to December 2017'); },
 
 	'start over': function() { startover(); responsiveVoice.speak('starting over'); }
  };
@@ -155,7 +154,7 @@ function initializeViz(){
 
 var placeholderDiv = document.getElementById("tableauViz");
 
-var url = "https://public.tableau.com/views/National_Activity_Report_ALEXA/NationalProgramActivityReport?:embed=y&:display_count=yes&publish=yes";
+var url = "https://public.tableau.com/views/AgencyOpsEducationOverview-ALEXA/AOEPODashboard?:embed=y&:display_count=yes&publish=yes";
 var options = {
 
 
@@ -174,7 +173,7 @@ var options = {
 
 //Tabitha says hello
 responsiveVoice.speak('Welcome to the Agency Ops Tableau Alexa Integration');
-selectCalifornia();
+selectAllRegions();
 
 //Make Character selection
 function selectHello()
@@ -183,20 +182,29 @@ function selectHello()
 	}
 function selectToday()
 	{
+	
 	}
-
+function OpenHome()
+	{
+	location.href = "Home.html";
+	}
+	function OpenActivity()
+	{
+	location.href = "Activity.html";
+	}
 function selectOverview ()
 {
 	responsiveVoice.speak('12 of the 14 regions saw enrollment increase over the previous year, with the largest increase occurring in the Florida region 68%.' +
 	'Of the two regions with decreasing enrollment, the West Central region saw the biggest decline of -15%.' +
-	'Enrollments nationwide have increased 21% from last year at this time' +
+	'Enrollment nationwide have increased 21% from last year at this time' +
 	'National School had the highest satisfaction rate this month with a score of  98%' +
 	'Targeted Topics satisfactio rate is down to 88% from last years 93%');
 }
 
 function selectAllRegions()
 	{
-	activeSheet.getWorksheets()[1].changeParameterValueAsync('Region Parameter', 'All', tableauSoftware.FilterUpdateType.REPLACE); 
+	workbook = viz.getWorkbook();
+	workbook.changeParameterValueAsync('Region Parameter',  'All');
 	}
 
 
@@ -276,82 +284,71 @@ function selectWestCentral()
 	workbook = viz.getWorkbook();
 	workbook.changeParameterValueAsync('Region Parameter',  'West Central');
 	}
-function select2016()
-	{
-	workbook = viz.getWorkbook();
-	workbook.changeParameterValueAsync('Year Parameter',  '2016');
-	}
-function select2017()
-	{
-	workbook = viz.getWorkbook();
-	workbook.changeParameterValueAsync('Year Parameter',  '2017');
-	}
-function select2018()
-	{
-	workbook = viz.getWorkbook();
-	workbook.changeParameterValueAsync('Year Parameter',  '2018');
-	}
 
-
+function selectJanuary18()
+	{
+	workbook = viz.getWorkbook();
+	workbook.changeParameterValueAsync('AU Date Parameter',  'January 2018');
+	}
 function selectJanuary()
 	{
 	workbook = viz.getWorkbook();
-	workbook.changeParameterValueAsync('Crs Month Parameter',  'January');
+	workbook.changeParameterValueAsync('AU Date Parameter',  'January 2017');
 	}
 function selectFebruary()
 	{
 	workbook = viz.getWorkbook();
-	workbook.changeParameterValueAsync('Crs Month Parameter',  'February');
+	workbook.changeParameterValueAsync('AU Date Parameter',  'February 2017');
 }
 function selectMarch()
 	{
 	workbook = viz.getWorkbook();
-	workbook.changeParameterValueAsync('Crs Month Parameter',  'March');
+	workbook.changeParameterValueAsync('CAU Date Parameter',  'March 2017');
 }
 function selectApril()
 	{
 	workbook = viz.getWorkbook();
-	workbook.changeParameterValueAsync('Crs Month Parameter',  'April');
+	workbook.changeParameterValueAsync('AU Date Parameter',  'April 2017');
 }
 function selectMay()
 	{
 	workbook = viz.getWorkbook();
-	workbook.changeParameterValueAsync('Crs Month Parameter',  'May');
+	workbook.changeParameterValueAsync('AU Date Parameter',  'May 2017');
 }
 function selectJune()
 	{
 	workbook = viz.getWorkbook();
-	workbook.changeParameterValueAsync('Crs Month Parameter',  'June');
+	workbook.changeParameterValueAsync('AU Date Parameter',  'June 2017');
 }
 function selectJuly()
 	{
 	workbook = viz.getWorkbook();
-	workbook.changeParameterValueAsync('Crs Month Parameter',  'July');
+	workbook.changeParameterValueAsync('AU Date Parameter',  'July 2017');
 	}
 function selectAugust()
 	{
 	workbook = viz.getWorkbook();
-	workbook.changeParameterValueAsync('Crs Month Parameter',  'August');
+	workbook.changeParameterValueAsync('AU Date Parameter',  'August 2017');
 	}
 function selectSeptember()
 	{
 	workbook = viz.getWorkbook();
-	workbook.changeParameterValueAsync('Crs Month Parameter',  'September');
+	workbook.changeParameterValueAsync('AU Date Parameter',  'September 2017');
 	}
 function selectOctober()
 	{
 	workbook = viz.getWorkbook();
-	workbook.changeParameterValueAsync('Crs Month Parameter',  'October');
+	workbook.changeParameterValueAsync('AU Date Parameter',  'October 2017');
 	}
 function selectNovember()
 	{
 	workbook = viz.getWorkbook();
-	workbook.changeParameterValueAsync('Crs Month Parameter',  'November');
+	workbook.changeParameterValueAsync('AU Date Parameter',  'November 2017');
 	}
 function selectDecember()
 	{
 	workbook = viz.getWorkbook();
-	workbook.changeParameterValueAsync('Crs Month Parameter',  'December');
+	workbook.changeParameterValueAsync('AU Date Parameter',  'December 2017');
 	}
 
 //Start Viz Over

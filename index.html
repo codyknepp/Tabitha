@@ -102,7 +102,7 @@
 	'Alexa go to the home page': function() { OpenHome(); responsiveVoice.speak('Opening the Home Page'); }, 
 	'Hi Alexa': function() { selectHello(); responsiveVoice.speak('Hello Cody'); }, 
 	'How are you today': function() { selectToday(); responsiveVoice.speak('I am doing well thank you for asking'); },  
-	'Alexa tell mwe the highlights': function() { selectOverview(); responsiveVoice.speak(''); },  
+	'Alexa tell me the highlights': function() { selectOverview(); responsiveVoice.speak(''); },  
   	'Select All Regions': function() { selectAllRegions(); responsiveVoice.speak('selecting all regions'); },
 	'Select California Region': function() { selectCalifornia(); responsiveVoice.speak('selecting California region'); },
 	'Select Capital Region': function() { selectCapital(); responsiveVoice.speak('selecting Capital region'); },
@@ -172,7 +172,7 @@ var options = {
 
 //Tabitha says hello
 responsiveVoice.speak('Welcome to the Agency Ops Tableau Alexa Integration');
-selectAllRegions();
+selectDecember();
 
 //Make Character selection
 function selectHello()
@@ -209,78 +209,78 @@ function selectAllRegions()
 function selectCalifornia()
 { 
 	workbook = viz.getWorkbook();
-	workbook.changeParameterValueAsync('Region Parameter',  'California');
+	workbook.changeParameterValueAsync('Region Parameter',  'CA');
 }
 
 function selectCapital()
 	{
 	workbook = viz.getWorkbook();
-	workbook.changeParameterValueAsync('Region Parameter',  'Capital');
+	workbook.changeParameterValueAsync('Region Parameter',  'CAP');
 	}
 function selectFlorida()
 	{
 	workbook = viz.getWorkbook();
-	workbook.changeParameterValueAsync('Region Parameter',  'Florida');
+	workbook.changeParameterValueAsync('Region Parameter',  'FL');
 	}
 function selectHomeOffice()
 	{
 	workbook = viz.getWorkbook();
-	workbook.changeParameterValueAsync('Region Parameter',  'Home Office');
+	workbook.changeParameterValueAsync('Region Parameter',  'HO');
 	}
 function selectMidwest()
 	{
 		workbook = viz.getWorkbook();
-	workbook.changeParameterValueAsync('Region Parameter',  'Midwest');
+	workbook.changeParameterValueAsync('Region Parameter',  'MW');
 	}
 function selectNewJersey()
 	{
 	workbook = viz.getWorkbook();
-	workbook.changeParameterValueAsync('Region Parameter',  'New Jersey');
+	workbook.changeParameterValueAsync('Region Parameter',  'ANJ');
 	}
 function selectNewYork()
 	{
 		workbook = viz.getWorkbook();
-	workbook.changeParameterValueAsync('Region Parameter',  'New York');
+	workbook.changeParameterValueAsync('Region Parameter',  'NY');
 	}
 function selectNorthCentral()
 	{
 		workbook = viz.getWorkbook();
-	workbook.changeParameterValueAsync('Region Parameter',  'North Central');
+	workbook.changeParameterValueAsync('Region Parameter',  'NC');
 	}
 function selectNortheast()
 	{
 	workbook = viz.getWorkbook();
-	workbook.changeParameterValueAsync('Region Parameter',  'Northeast');
+	workbook.changeParameterValueAsync('Region Parameter',  'NE');
 	}
 function selectNorthwest()
 	{
 	workbook = viz.getWorkbook();
-	workbook.changeParameterValueAsync('Region Parameter',  'Northwest');
+	workbook.changeParameterValueAsync('Region Parameter',  'NW');
 	}
 function selectSoutheast()
 	{
 	workbook = viz.getWorkbook();
-	workbook.changeParameterValueAsync('Region Parameter',  'Southeast');
+	workbook.changeParameterValueAsync('Region Parameter',  'SE');
 	}
 function selectSouthern()
 	{
 	workbook = viz.getWorkbook();
-	workbook.changeParameterValueAsync('Region Parameter',  'Southern');
+	workbook.changeParameterValueAsync('Region Parameter',  'SO');
 	}
 function selectSouthwest()
 	{
 	workbook = viz.getWorkbook();
-	workbook.changeParameterValueAsync('Region Parameter',  'Southwest');
+	workbook.changeParameterValueAsync('Region Parameter',  'SW');
 	}
 function selectTexas()
 	{
 	workbook = viz.getWorkbook();
-	workbook.changeParameterValueAsync('Region Parameter',  'Texas');
+	workbook.changeParameterValueAsync('Region Parameter',  'TX');
 	}
 function selectWestCentral()
 	{
 	workbook = viz.getWorkbook();
-	workbook.changeParameterValueAsync('Region Parameter',  'West Central');
+	workbook.changeParameterValueAsync('Region Parameter',  'WC');
 	}
 
 function selectJanuary18()

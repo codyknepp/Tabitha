@@ -1,0 +1,375 @@
+
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+	<title>Agency Ops QStream Activity - With Alexa</title>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="Tableau and Alexa">
+		<meta name="author" content="Cody Knepp">
+
+		<script src="annyang.min.js"></script> <!-- Voice Recognition -->
+		<script src="responsivevoice.js"></script> <!-- Voice Response -->
+		
+		<script src="https://public.tableausoftware.com/javascripts/api/tableau-2.min.js " type="text/javascript"></script> 
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		    <!-- stylesheet css -->
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/nivo-lightbox.css">
+		<link rel="stylesheet" href="css/nivo_themes/default/default.css">
+		<link rel="stylesheet" href="css/templatemo-style.css">
+		<!-- google web font css -->
+		<link href='http://fonts.googleapis.com/css?family=Raleway:400,300,600,700' rel='stylesheet' type='text/css'>
+
+</head>	
+
+<body onload=initializeViz(); data-spy="scroll" data-target=".navbar-collapse" id="top">
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+    	
+        <!--Logo goes here -->
+      <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon icon-bar"></span> <span class="icon icon-bar"></span> <span class="icon icon-bar"></span></button>
+
+   </div>
+      <!--End logo code -->
+      
+    <div class="collapse navbar-collapse">
+    
+      <ul class="nav navbar-nav navbar-left" >
+      	<li><a href="index.html"><img src="images/Allstate_logo.jpg" alt="AGENCY OPS EDUCATION" style="width:260px; height:50px;"></a>  
+        <li><a href="index.html" class="smoothScroll">HOME</a></li>
+        <!--<li><a href="InteractiveCourses.html" class="smoothScroll">INTERACTIVE COURSES</a></li>-->
+        <li><a href="index.html" class="smoothScroll">ACTIVITY REPORT</a></li>
+        <li><a href="AddResources.html" class="smoothScroll">COURSE SATISFACTION</a></li>
+        <li><a href="AutoNewHire.html" class="smoothScroll">NATIONAL SCHOOL NPS</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<!-- divider section -->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-1 col-sm-1"></div>
+    <div class="col-md-10 col-sm-10">
+      <hr>
+    </div>
+    <div class="col-md-1 col-sm-1"></div>
+  </div>
+</div>
+
+<!-- divider section -->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-1 col-sm-1"></div>
+    <div class="col-md-10 col-sm-10">
+      <hr>
+    </div>
+    <div class="col-md-1 col-sm-1"></div>
+  </div>
+</div>
+<!-- service section -->
+<div id="service">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-16 col-sm-16">
+      <div class="col-md-3 col-sm-3"> <i class="fa fa-microphone"></i>
+        <h4>&nbsp;&nbsp;Tableau Alexa Integration</h4>
+        <p>Try using phrases such as "Select Northeast Region", "Select Year 2018" or "Filter Month to Janaury" .</p>
+		<br>
+			<h4>National Activity Report Overview</h4>
+		<!--<button type="button" onclick="selectCalifornia()">Paremeter Change</button>-->
+		var wording=''
+      </div>
+	   
+	   <div class="col-md-4 col-sm-4"> 
+		   	<p></p>
+      </div>
+      <div class="col-md-8 col-sm-8"> 
+       
+		<center><div id='tableauViz'></div></center>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+<script>
+  // These are the voice commands in quotes followed by the function
+  var commands = {
+	'Hi Alexa': function() { selectHello(); responsiveVoice.speak('Hello Cody'); }, 
+	'How are you today': function() { selectToday(); responsiveVoice.speak('I am doing well thank you for asking'); },  
+	'Alexa give me an ovierview': function() { selectOverview(); responsiveVoice.speak(''); },  
+  	'Select All Regions': function() { selectAllRegions(); responsiveVoice.speak('selecting all regions'); },
+	'Select California Region': function() { selectCalifornia(); responsiveVoice.speak('selecting California region'); },
+	'Select Capital Region': function() { selectCapital(); responsiveVoice.speak('selecting Capital region'); },
+	'Select Florida Region': function() { selectFlorida(); responsiveVoice.speak('selecting Florida region'); },
+	'Select Home Office Region': function() { selectHomeOffice(); responsiveVoice.speak('selecting Home Office region'); },
+	'Select Midwest Region': function() { selectMidwest(); responsiveVoice.speak('selecting Midwest region'); },
+	'Select New Jersey Region': function() { selectNewJersey(); responsiveVoice.speak('selecting New Jersey region'); },
+	'Select New York Region': function() { selectNewYork(); responsiveVoice.speak('selecting New York  region'); },
+	'Select North Central Region': function() { selectNorthCentral(); responsiveVoice.speak('selecting North Central region'); },
+	'Select Northeast Region': function() { selectNortheast(); responsiveVoice.speak('selecting Northeast region'); },
+	'Select Northwest Region': function() { selectNorthwest(); responsiveVoice.speak('selecting Northwest region'); },
+	'Select Southeast Region': function() { selectSoutheast(); responsiveVoice.speak('selecting Southeast region'); },
+	'Select Southwest Region': function() { selectSouthwest(); responsiveVoice.speak('selecting Southwest region'); },
+	'Select Southern Region': function() { selectSouthern(); responsiveVoice.speak('selecting Southern region'); },
+	'Select Southwest Region': function() { selectSouthwest(); responsiveVoice.speak('selecting Southwest region'); },
+	'Select Texas Region': function() { selectTexas(); responsiveVoice.speak('selecting Texas region'); },
+	'Select West Central Region': function() { selectWestCentral(); responsiveVoice.speak('selecting West Central Region'); },
+	// Years
+ 	'Select Year Twenty Sixteen': function() { select2016(); responsiveVoice.speak('selecting Year 2018'); },
+	'Select Year Twenty Seventeen': function() { select2017(); responsiveVoice.speak('selecting Year 2017'); },
+	'Select Year Twenty Eighteeen': function() { select2018(); responsiveVoice.speak('selecting Year 2018'); },
+	//Months
+	'Filter month to January': function() { selectJanuary(); responsiveVoice.speak('filtering month to January'); },
+	'Filter month to February': function() { selectFebruary(); responsiveVoice.speak('filtering month to February'); },
+	'Filter month to March': function() { selectMarch(); responsiveVoice.speak('filtering month to March'); },
+	'Filter month to April': function() { selectApril(); responsiveVoice.speak('filtering month to April'); },
+	'Filter month to May': function() { selectMay(); responsiveVoice.speak('filtering month to May'); },
+	'Filter month to June': function() { selectJune(); responsiveVoice.speak('filtering month to June'); },
+	'Filter month to July': function() { selectJuly(); responsiveVoice.speak('filtering month to July'); },
+	'Filter month to August': function() { selectAugust(); responsiveVoice.speak('filtering month to August'); },
+	'Filter month to September': function() { selecSeptember(); responsiveVoice.speak('filtering month to September'); },
+	'Filter month to October': function() { selectOctober(); responsiveVoice.speak('filtering month to October'); },
+	'Filter month to November': function() { selectNovember(); responsiveVoice.speak('filtering month to November'); },
+	'Filter month to December': function() { selectDecember(); responsiveVoice.speak('filtering month to December'); },
+
+	'start over': function() { startover(); responsiveVoice.speak('starting over'); }
+ };
+  
+  // Add commands to annyang
+  annyang.addCommands(commands);
+  
+  // Start listening.
+  annyang.start();
+
+</script>
+
+<script>
+var viz, workbook, activeSheet, Worksheet, worksheet;
+function initializeViz(){
+
+var placeholderDiv = document.getElementById("tableauViz");
+
+var url = "https://public.tableau.com/views/National_Activity_Report_ALEXA/NationalProgramActivityReport?:embed=y&:display_count=yes&publish=yes";
+var options = {
+
+
+   hideTabs: true,
+   hideToolbar: true,
+
+
+  onFirstInteractive: function () {
+  workbook = viz.getWorkbook();
+  activeSheet = workbook.getActiveSheet();
+
+}
+};
+  viz = new tableauSoftware.Viz(placeholderDiv, url, options);
+}
+
+//Tabitha says hello
+responsiveVoice.speak('Welcome to the Agency Ops Tableau Alexa Integration');
+selectCalifornia();
+
+//Make Character selection
+function selectHello()
+	{
+
+	}
+function selectToday()
+	{
+	
+	}
+
+function selectOverview ()
+{
+	responsiveVoice.speak('12 of the 14 regions saw enrollment increase over the previous year, with the largest increase occurring in the Florida region 68%.' +
+	'Of the two regions with decreasing enrollment, the West Central region saw the biggest decline of -15%.' +
+	'Enrollment nationwide have increased 21% from last year at this time' +
+	'National School had the highest satisfaction rate this month with a score of  98%' +
+	'Targeted Topics satisfactio rate is down to 88% from last years 93%');
+}
+
+function selectAllRegions()
+	{
+	activeSheet.getWorksheets()[1].changeParameterValueAsync('Region Parameter', 'All', tableauSoftware.FilterUpdateType.REPLACE); 
+	}
+
+
+function selectCalifornia()
+{ 
+	workbook = viz.getWorkbook();
+	workbook.changeParameterValueAsync('Region Parameter',  'California');
+}
+
+function selectCapital()
+	{
+	workbook = viz.getWorkbook();
+	workbook.changeParameterValueAsync('Region Parameter',  'Capital');
+	}
+function selectFlorida()
+	{
+	workbook = viz.getWorkbook();
+	workbook.changeParameterValueAsync('Region Parameter',  'Florida');
+	}
+function selectHomeOffice()
+	{
+	workbook = viz.getWorkbook();
+	workbook.changeParameterValueAsync('Region Parameter',  'Home Office');
+	}
+function selectMidwest()
+	{
+		workbook = viz.getWorkbook();
+	workbook.changeParameterValueAsync('Region Parameter',  'Midwest');
+	}
+function selectNewJersey()
+	{
+	workbook = viz.getWorkbook();
+	workbook.changeParameterValueAsync('Region Parameter',  'New Jersey');
+	}
+function selectNewYork()
+	{
+		workbook = viz.getWorkbook();
+	workbook.changeParameterValueAsync('Region Parameter',  'New York');
+	}
+function selectNorthCentral()
+	{
+		workbook = viz.getWorkbook();
+	workbook.changeParameterValueAsync('Region Parameter',  'North Central');
+	}
+function selectNortheast()
+	{
+	workbook = viz.getWorkbook();
+	workbook.changeParameterValueAsync('Region Parameter',  'Northeast');
+	}
+function selectNorthwest()
+	{
+	workbook = viz.getWorkbook();
+	workbook.changeParameterValueAsync('Region Parameter',  'Northwest');
+	}
+function selectSoutheast()
+	{
+	workbook = viz.getWorkbook();
+	workbook.changeParameterValueAsync('Region Parameter',  'Southeast');
+	}
+function selectSouthern()
+	{
+	workbook = viz.getWorkbook();
+	workbook.changeParameterValueAsync('Region Parameter',  'Southern');
+	}
+function selectSouthwest()
+	{
+	workbook = viz.getWorkbook();
+	workbook.changeParameterValueAsync('Region Parameter',  'Southwest');
+	}
+function selectTexas()
+	{
+	workbook = viz.getWorkbook();
+	workbook.changeParameterValueAsync('Region Parameter',  'Texas');
+	}
+function selectWestCentral()
+	{
+	workbook = viz.getWorkbook();
+	workbook.changeParameterValueAsync('Region Parameter',  'West Central');
+	}
+function select2016()
+	{
+	workbook = viz.getWorkbook();
+	workbook.changeParameterValueAsync('Year Parameter',  '2016');
+	}
+function select2017()
+	{
+	workbook = viz.getWorkbook();
+	workbook.changeParameterValueAsync('Year Parameter',  '2017');
+	}
+function select2018()
+	{
+	workbook = viz.getWorkbook();
+	workbook.changeParameterValueAsync('Year Parameter',  '2018');
+	}
+
+
+function selectJanuary()
+	{
+	workbook = viz.getWorkbook();
+	workbook.changeParameterValueAsync('Crs Month Parameter',  'January');
+	}
+function selectFebruary()
+	{
+	workbook = viz.getWorkbook();
+	workbook.changeParameterValueAsync('Crs Month Parameter',  'February');
+}
+function selectMarch()
+	{
+	workbook = viz.getWorkbook();
+	workbook.changeParameterValueAsync('Crs Month Parameter',  'March');
+}
+function selectApril()
+	{
+	workbook = viz.getWorkbook();
+	workbook.changeParameterValueAsync('Crs Month Parameter',  'April');
+}
+function selectMay()
+	{
+	workbook = viz.getWorkbook();
+	workbook.changeParameterValueAsync('Crs Month Parameter',  'May');
+}
+function selectJune()
+	{
+	workbook = viz.getWorkbook();
+	workbook.changeParameterValueAsync('Crs Month Parameter',  'June');
+}
+function selectJuly()
+	{
+	workbook = viz.getWorkbook();
+	workbook.changeParameterValueAsync('Crs Month Parameter',  'July');
+	}
+function selectAugust()
+	{
+	workbook = viz.getWorkbook();
+	workbook.changeParameterValueAsync('Crs Month Parameter',  'August');
+	}
+function selectSeptember()
+	{
+	workbook = viz.getWorkbook();
+	workbook.changeParameterValueAsync('Crs Month Parameter',  'September');
+	}
+function selectOctober()
+	{
+	workbook = viz.getWorkbook();
+	workbook.changeParameterValueAsync('Crs Month Parameter',  'October');
+	}
+function selectNovember()
+	{
+	workbook = viz.getWorkbook();
+	workbook.changeParameterValueAsync('Crs Month Parameter',  'November');
+	}
+function selectDecember()
+	{
+	workbook = viz.getWorkbook();
+	workbook.changeParameterValueAsync('Crs Month Parameter',  'December');
+	}
+
+//Start Viz Over
+function startover()
+	{
+		responsiveVoice.speak('Resetting the dashboard')
+	viz.revertAllAsync();
+	viz.refreshDataAsync();
+	}
+
+</script>
+
+</body>
+</html>		
+		

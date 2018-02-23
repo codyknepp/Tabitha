@@ -39,7 +39,7 @@
     <div class="collapse navbar-collapse">
     
       <ul class="nav navbar-nav navbar-left" >
-	 <li><a href="index.html" class="smoothScroll">AGENCY OPS EDUCATION</a></li>
+      	 <li><a href="index.html" class="smoothScroll">AGENCY OPS EDUCATION</a></li>
         <li><a href="index.html" class="smoothScroll">HOME</a></li>
         <!--<li><a href="InteractiveCourses.html" class="smoothScroll">INTERACTIVE COURSES</a></li>-->
         <li><a href="Activity.html" class="smoothScroll">ACTIVITY REPORT</a></li>
@@ -102,7 +102,7 @@
 	'Alexa go to the home page': function() { OpenHome(); responsiveVoice.speak('Opening the Home Page'); }, 
 	'Hi Alexa': function() { selectHello(); responsiveVoice.speak('Hello Cody'); }, 
 	'How are you today': function() { selectToday(); responsiveVoice.speak('I am doing well thank you for asking'); },  
-	'Alexa tell me the highlights': function() { selectOverview(); responsiveVoice.speak(''); },  
+	'Alexa give me an ovierview': function() { selectOverview(); responsiveVoice.speak(''); },  
   	'Select All Regions': function() { selectAllRegions(); responsiveVoice.speak('selecting all regions'); },
 	'Select California Region': function() { selectCalifornia(); responsiveVoice.speak('selecting California region'); },
 	'Select Capital Region': function() { selectCapital(); responsiveVoice.speak('selecting Capital region'); },
@@ -172,7 +172,7 @@ var options = {
 
 //Tabitha says hello
 responsiveVoice.speak('Welcome to the Agency Ops Tableau Alexa Integration');
-selectDecember();
+selectAllRegions();
 
 //Make Character selection
 function selectHello()
@@ -187,16 +187,17 @@ function OpenHome()
 	{
 	location.href = "Index.html";
 	}
-	function OpenActivity()
+function OpenActivity()
 	{
 	location.href = "Activity.html";
 	}
 function selectOverview ()
 {
-	responsiveVoice.speak('There were 63 new agents this month, and half of them are startup agencies' +
-			      'Overall confidence in new agents rose from 63% to 91% after AOC' +
-			     'National School satisfaction increased 25% over the prior month' +
-			     'LSP confidence sits at 87% for the year and finally we had approximately 700 LSPS complete binding authority this month. ');
+	responsiveVoice.speak('12 of the 14 regions saw enrollment increase over the previous year, with the largest increase occurring in the Florida region 68%.' +
+	'Of the two regions with decreasing enrollment, the West Central region saw the biggest decline of -15%.' +
+	'Enrollment nationwide have increased 21% from last year at this time' +
+	'National School had the highest satisfaction rate this month with a score of  98%' +
+	'Targeted Topics satisfactio rate is down to 88% from last years 93%');
 }
 
 function selectAllRegions()
@@ -209,78 +210,78 @@ function selectAllRegions()
 function selectCalifornia()
 { 
 	workbook = viz.getWorkbook();
-	workbook.changeParameterValueAsync('Region Parameter',  'CA');
+	workbook.changeParameterValueAsync('Region Parameter',  'California');
 }
 
 function selectCapital()
 	{
 	workbook = viz.getWorkbook();
-	workbook.changeParameterValueAsync('Region Parameter',  'CAP');
+	workbook.changeParameterValueAsync('Region Parameter',  'Capital');
 	}
 function selectFlorida()
 	{
 	workbook = viz.getWorkbook();
-	workbook.changeParameterValueAsync('Region Parameter',  'FL');
+	workbook.changeParameterValueAsync('Region Parameter',  'Florida');
 	}
 function selectHomeOffice()
 	{
 	workbook = viz.getWorkbook();
-	workbook.changeParameterValueAsync('Region Parameter',  'HO');
+	workbook.changeParameterValueAsync('Region Parameter',  'Home Office');
 	}
 function selectMidwest()
 	{
 		workbook = viz.getWorkbook();
-	workbook.changeParameterValueAsync('Region Parameter',  'MW');
+	workbook.changeParameterValueAsync('Region Parameter',  'Midwest');
 	}
 function selectNewJersey()
 	{
 	workbook = viz.getWorkbook();
-	workbook.changeParameterValueAsync('Region Parameter',  'ANJ');
+	workbook.changeParameterValueAsync('Region Parameter',  'New Jersey');
 	}
 function selectNewYork()
 	{
 		workbook = viz.getWorkbook();
-	workbook.changeParameterValueAsync('Region Parameter',  'NY');
+	workbook.changeParameterValueAsync('Region Parameter',  'New York');
 	}
 function selectNorthCentral()
 	{
 		workbook = viz.getWorkbook();
-	workbook.changeParameterValueAsync('Region Parameter',  'NC');
+	workbook.changeParameterValueAsync('Region Parameter',  'North Central');
 	}
 function selectNortheast()
 	{
 	workbook = viz.getWorkbook();
-	workbook.changeParameterValueAsync('Region Parameter',  'NE');
+	workbook.changeParameterValueAsync('Region Parameter',  'Northeast');
 	}
 function selectNorthwest()
 	{
 	workbook = viz.getWorkbook();
-	workbook.changeParameterValueAsync('Region Parameter',  'NW');
+	workbook.changeParameterValueAsync('Region Parameter',  'Northwest');
 	}
 function selectSoutheast()
 	{
 	workbook = viz.getWorkbook();
-	workbook.changeParameterValueAsync('Region Parameter',  'SE');
+	workbook.changeParameterValueAsync('Region Parameter',  'Southeast');
 	}
 function selectSouthern()
 	{
 	workbook = viz.getWorkbook();
-	workbook.changeParameterValueAsync('Region Parameter',  'SO');
+	workbook.changeParameterValueAsync('Region Parameter',  'Southern');
 	}
 function selectSouthwest()
 	{
 	workbook = viz.getWorkbook();
-	workbook.changeParameterValueAsync('Region Parameter',  'SW');
+	workbook.changeParameterValueAsync('Region Parameter',  'Southwest');
 	}
 function selectTexas()
 	{
 	workbook = viz.getWorkbook();
-	workbook.changeParameterValueAsync('Region Parameter',  'TX');
+	workbook.changeParameterValueAsync('Region Parameter',  'Texas');
 	}
 function selectWestCentral()
 	{
 	workbook = viz.getWorkbook();
-	workbook.changeParameterValueAsync('Region Parameter',  'WC');
+	workbook.changeParameterValueAsync('Region Parameter',  'West Central');
 	}
 
 function selectJanuary18()
@@ -360,6 +361,7 @@ function startover()
 </script>
 
 </body>
-</html>		
+</html>			
+	
 		
 		
